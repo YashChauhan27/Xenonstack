@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <style>
+            .mssg-txt{
+                position: absolute;
+                margin-left: 70%;
+                font-size: 15px;
+                border: 1px solid black;
+                padding: 10px;
+                border-radius: 17px;
+                background-color: darkred;
+                color: white;
+            }
+            .form_box{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: sans-serif;
+                font-size: 1.5em;
+                height: 100vh;
+                background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);;
+            }
+            .form_box > form{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                border: 1px solid black;
+                width: 30%;
+                height: 25vh;
+                border-radius: 15px;
+            }
+            form > input{
+                width: 70%;
+                height: 3vh;
+                border-radius: 11px;
+                padding: 1vh;
+                border: 0.5px solid;
+                font-size: 0.75em;
+            }
+            form > button{
+                width: 50%;
+                height: 4vh;
+                font-size: 1.1em;
+                border-radius: 20px;
+                border: 1px dotted;
+            }
+            form > button:hover{
+                cursor:pointer;
+                background-color: #aa7ecd;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="form_box">
+             {% if mssg %}
+                <p class="mssg-txt">{{ mssgTxt }}</p>
+            {% endif %}
+            <h2>Login Details</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <input placeholder="username" name="username">
+                <input placeholder="password" name="password" type="password">
+                <button type="submit">Login</button>
+            </form>
+            <a href="/signup">New user ?</a>
+        </div>
+    </body>
+</html>
